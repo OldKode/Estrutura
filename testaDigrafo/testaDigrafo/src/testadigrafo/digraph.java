@@ -1,4 +1,7 @@
 package testadigrafo;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author fabio.aglubacheski
@@ -7,7 +10,8 @@ public class digraph{
 	private int V; // número de vértices
 	private int A; // número de arcos
 	private No adj[]; // listas de adjcências
-        private int visitado[];    
+        private int visitado[]; // lista de vertices que já passou
+        //private ArrayList<int> caminho = new Arraylist<int>(); // lista caminho
         
         // construtor da clsse
 	// inicializa os atributos da classe e cria a 
@@ -17,6 +21,7 @@ public class digraph{
             this.A = 0;
             this.adj = new No[V];
             this.visitado = new int[V];
+          //  this.caminho = new Arraylist <int>;
 	}
         /* 
            Método insere um arco v-w no digrafo. O método supõe 
@@ -137,6 +142,7 @@ public class digraph{
         public void BuscaProf(digraph D, int vertice){
             D.visitado[vertice] = 1;
             System.out.println(vertice);
+            //D.caminho.
             No aux = D.adj[vertice];
             
             while( aux != null ){
@@ -145,5 +151,9 @@ public class digraph{
                 }
                 aux = aux.getProx();
             }
+        }
+        
+        public boolean buscaCaminho(digraph D, int s, int t){
+            return true;
         }
 }
