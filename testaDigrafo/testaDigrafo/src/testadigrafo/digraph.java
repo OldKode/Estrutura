@@ -7,7 +7,8 @@ public class digraph{
 	private int V; // número de vértices
 	private int A; // número de arcos
 	private No adj[]; // listas de adjcências
-
+        private int visitado[];    
+        
         // construtor da clsse
 	// inicializa os atributos da classe e cria a 
 	// o vetor de listas deadjacências para V vértices
@@ -15,6 +16,7 @@ public class digraph{
             this.V = V;
             this.A = 0;
             this.adj = new No[V];
+            this.visitado = new int[V];
 	}
         /* 
            Método insere um arco v-w no digrafo. O método supõe 
@@ -59,6 +61,7 @@ public class digraph{
                     }else{
                         ant.setProx(aux.getProx());
                     }
+                    this.A--;
                     return; // ejeta
                 }
                 ant = aux;
@@ -116,5 +119,31 @@ public class digraph{
                 cont++;
             }
             return cont;
+        }
+        
+        
+        public void Busca(digraph D){
+            for(int indice =0 ;indice< D.visitado.length; indice++){
+                D.visitado[indice] = 0;
+            }
+            
+            for(int indice =0 ;indice< D.V; indice++){
+                if(D.visitado[indice] == 0){
+                    BuscaProf(D,indice);
+                }
+            }
+        }
+        
+        public void BuscaProf(digraph D, int vertice){
+            D.visitado[vertice] = 1;
+            System.out.println(vertice);
+            No aux = D.adj[vertice];
+            
+            while( aux != null ){
+                if(D.visitado[aux.getElem()] == 0){
+                    D.BuscaProf(D, aux.getElem());
+                }
+                aux = aux.getProx();
+            }
         }
 }

@@ -39,6 +39,9 @@ public class TestaDigrafo {
         System.out.println("Digrafo atual");
         G.mostra();
         
+        System.out.println("");
+        System.out.println("teste de busca");
+        G.Busca(G);
     }
     
 }
